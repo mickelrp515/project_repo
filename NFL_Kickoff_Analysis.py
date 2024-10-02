@@ -4,7 +4,6 @@ import pandas as pd  # Data manipulation and analysis
 import duckdb # Used to write SQL inside Python script
 import plotly.express as px # Used to create Python visualizations
 import plotly.graph_objects as go # Used to create Python visualizations
-pip install streamlit-autorefresh
 from streamlit_autorefresh import st_autorefresh
 
 # Refresh every 20 minutes
