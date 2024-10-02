@@ -4,6 +4,7 @@ import pandas as pd  # Data manipulation and analysis
 import duckdb # Used to write SQL inside Python script
 import plotly.express as px # Used to create Python visualizations
 import plotly.graph_objects as go # Used to create Python visualizations
+# pip install streamlit-autorefresh
 from streamlit_autorefresh import st_autorefresh
 
 # Refresh every 20 minutes
@@ -338,7 +339,7 @@ fig.add_trace(go.Scatter(x=season, y=avg_starting_field_position, mode='lines+ma
 fig.add_trace(go.Scatter(
     x=season, # Assign the season data set to the x axis
     y=[0.55] * len(season),  # Constant 55% target line
-    mode='lines', # NO "MARKERS" because we don't need data points like the "Average Starting Field Position" line
+    mode='lines', 
     name='Target Return Rate (55%)', # Target line graph label
     line=dict(dash='dot', color='black'),  # Set line to be dotted and red
     yaxis='y1'  # Attach this line to the primary y-axis (Return Rate)
@@ -351,7 +352,7 @@ fig.update_layout(
     yaxis=dict(
         title='Return/Scoring Rate (%)',
         tickformat=',.1%',  # Format y1-axis as percentage
-        side='left', # Identifies which side of the graph to label the y axis
+        side='left', # Identifies which side to plot the ticks and labels
         range=[.2,.6] # Hardcoded range of values. This can be set to auto, but I liked the fixed axis
     ),
     yaxis2=dict(
@@ -456,7 +457,7 @@ fig.update_layout(
     margin=dict(l=40, r=40, t=80, b=40), # additional padding options around margins
 )
 
-# Customize x-axis to show separators between groups (SEASONS) dynamically
+# Customize x-axis to show separators between groups dynamically
 fig.for_each_xaxis(lambda xaxis: xaxis.update(
     showgrid=False, # hide grids
     showline=True, # display verticle grid line separating years along x axis
@@ -471,7 +472,7 @@ fig.for_each_xaxis(lambda xaxis: xaxis.update(
     tickformat='.1%' # format data values if the x axis were to display data labels
 ))
 
-# Customize y-axis to show only outer borders (may not neeed this line of code)
+# Customize y-axis to show only outer borders
 fig.for_each_yaxis(lambda yaxis: yaxis.update(
     showgrid=False,
     showline=True,
